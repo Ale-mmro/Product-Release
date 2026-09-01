@@ -87,19 +87,43 @@
     .reveal{opacity:1;transform:none;transition:none;}
   }
 
-  /* ---------- topbar ---------- */
+  /* ---------- site header ---------- */
+  .site-header{position:sticky;top:0;z-index:50;}
+
   .topbar{
     background:var(--ink);
     color:#fff;
   }
   .topbar .wrap{
     display:flex;align-items:center;justify-content:space-between;
-    padding-block:18px;
+    padding-block:16px;
   }
   .brand{display:flex;align-items:center;gap:9px;}
-  .brand-mark{height:22px;width:auto;display:block;}
+  .brand-mark{height:20px;width:auto;display:block;}
   .brand .g{font-family:'Public Sans';font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8fb4c9;}
   .topbar .date{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.05em;color:#9db3d1;}
+
+  /* ---------- site nav ---------- */
+  .site-nav{background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08);}
+  .site-nav .wrap{display:flex;align-items:center;flex-wrap:wrap;}
+  @media (max-width:520px){ .nav-eyebrow{display:none;} }
+  .nav-eyebrow{
+    font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:#5f7396;padding-right:16px;margin-right:4px;border-right:1px solid rgba(255,255,255,.1);
+  }
+  .nav-links{display:flex;gap:2px;}
+  .nav-link{
+    display:inline-flex;align-items:center;gap:7px;
+    padding:13px 16px;font-family:'IBM Plex Mono';font-size:12.5px;font-weight:500;letter-spacing:.03em;
+    color:#9db3d1;text-decoration:none;border-bottom:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease;
+  }
+  .nav-link:hover{color:#fff;}
+  .nav-link.active{color:#fff;border-color:var(--cyan);}
+  .nav-link .tag{
+    font-family:'Public Sans';font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+    background:rgba(34,184,232,.15);color:#6fdcff;padding:2px 7px;border-radius:20px;
+  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -334,6 +358,7 @@
   a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
 </style>
 
+<div class="site-header">
 <header class="topbar">
   <div class="wrap">
     <div class="brand">
@@ -342,12 +367,22 @@
     <div class="date mono">AGOSTO / 2026</div>
   </div>
 </header>
+<nav class="site-nav">
+  <div class="wrap">
+    <span class="nav-eyebrow">Sprints</span>
+    <div class="nav-links">
+      <a class="nav-link active" href="#top">Sprint 13</a>
+      <a class="nav-link" href="https://one7.atlassian.net/jira/software/c/projects/BDP/boards/191/reports/sprint-retrospective?sprint=1567" target="_blank" rel="noopener noreferrer">Sprint 14 <span class="tag">Em andamento</span></a>
+    </div>
+  </div>
+</nav>
+</div>
 
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-glow"></div>
   <div class="wrap">
     <span class="hero-eyebrow"><span class="dot"></span>Sprint 13 encerrada</span>
-    <h1>Entregamos<span class="accent">.</span><br>E isso muda<br>o seu dia.</h1>
+    <h1>Entregamos<span class="accent">!</span><br>E isso muda<br>o seu dia.</h1>
     <p class="hero-sub">Auditoria mais rápida, IA mais confiável — 48 entregas que travam comportamentos que atrapalhavam quem analisa proposta todos os dias.</p>
     <div class="hero-meta">
       <div class="item"><span class="k">Board</span><span class="v">Novas Soluções</span></div>
