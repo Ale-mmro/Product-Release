@@ -123,13 +123,19 @@
   }
   @media (prefers-reduced-motion: reduce){ .hero-glow{animation:none;} }
   .hero .wrap{position:relative;padding-block:96px 76px;}
+  .sprint-tags{display:flex;flex-wrap:wrap;gap:10px;}
   .hero-eyebrow{
     display:inline-flex;align-items:center;gap:8px;
     font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;
     color:#a9e6f8;background:rgba(34,184,232,.12);border:1px solid rgba(34,184,232,.35);
     padding:6px 12px;border-radius:2px;
+    text-decoration:none;cursor:pointer;transition:background .15s ease, border-color .15s ease, color .15s ease;
   }
+  .hero-eyebrow:hover{background:rgba(34,184,232,.2);border-color:rgba(34,184,232,.5);}
   .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#4bd6ff;box-shadow:0 0 0 4px rgba(75,214,255,.18);}
+  .hero-eyebrow.alt{color:#9db3d1;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);}
+  .hero-eyebrow.alt:hover{color:#fff;background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24);}
+  .hero-eyebrow.alt .dot{background:#6fdcff;box-shadow:0 0 0 4px rgba(111,220,255,.12);}
   .hero h1{
     font-size:clamp(48px,9vw,92px);
     font-weight:900;
@@ -347,7 +353,10 @@
 <section class="hero" id="top">
   <div class="hero-glow"></div>
   <div class="wrap">
-    <span class="hero-eyebrow"><span class="dot"></span>Sprint 13 encerrada</span>
+    <div class="sprint-tags">
+      <a class="hero-eyebrow" href="#top"><span class="dot"></span>Sprint 13 encerrada</a>
+      <a class="hero-eyebrow alt" href="https://one7.atlassian.net/jira/software/c/projects/BDP/boards/191/reports/sprint-retrospective?sprint=1567" target="_blank" rel="noopener noreferrer"><span class="dot"></span>Sprint 14 em andamento</a>
+    </div>
     <h1>Entregamos<span class="accent">!</span><br>E isso muda<br>o seu dia.</h1>
     <p class="hero-sub">Auditoria mais rápida, IA mais confiável — 48 entregas que travam comportamentos que atrapalhavam quem analisa proposta todos os dias.</p>
     <div class="hero-meta">
