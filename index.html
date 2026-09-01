@@ -136,6 +136,10 @@
   .hero-eyebrow.alt{color:#9db3d1;background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);}
   .hero-eyebrow.alt:hover{color:#fff;background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.24);}
   .hero-eyebrow.alt .dot{background:#6fdcff;box-shadow:0 0 0 4px rgba(111,220,255,.12);}
+  .hero-eyebrow.default{
+    color:#5f7396;background:transparent;border:1px dashed rgba(255,255,255,.16);cursor:default;
+  }
+  .hero-eyebrow.default .dot{background:#5f7396;box-shadow:none;}
   .hero h1{
     font-size:clamp(48px,9vw,92px);
     font-weight:900;
@@ -354,6 +358,7 @@
   <div class="hero-glow"></div>
   <div class="wrap">
     <div class="sprint-tags">
+      <span class="hero-eyebrow default"><span class="dot"></span>Sprint 12</span>
       <a class="hero-eyebrow" href="#top"><span class="dot"></span>Sprint 13 encerrada</a>
       <a class="hero-eyebrow alt" href="https://one7.atlassian.net/jira/software/c/projects/BDP/boards/191/reports/sprint-retrospective?sprint=1567" target="_blank" rel="noopener noreferrer"><span class="dot"></span>Sprint 14 em andamento</a>
     </div>
