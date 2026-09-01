@@ -1,5 +1,5 @@
 <title>BDP Sprint 13</title>
-<meta name="description" content="Release notes da Sprint 13 do Backlog de Produtos da One7: 48 entregas em auditoria, crédito e One7ai." />
+<meta name="description" content="Release notes da Sprint 13 do board Novas Soluções (BDP) da One7: 48 entregas em auditoria, crédito e One7ai." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
@@ -140,7 +140,7 @@
     -webkit-background-clip:text;background-clip:text;color:transparent;
   }
   .hero-sub{
-    margin-top:20px;font-size:clamp(18px,2.6vw,24px);color:#c4d3ea;font-weight:500;max-width:34ch;
+    margin-top:20px;font-size:clamp(18px,2.6vw,24px);color:#c4d3ea;font-weight:500;max-width:36ch;
   }
   .hero-meta{
     margin-top:52px;display:flex;flex-wrap:wrap;gap:28px;
@@ -152,8 +152,8 @@
 
   /* ---------- intro ---------- */
   .intro{padding-block:76px 8px;}
-  .intro h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;max-width:20ch;}
-  .intro p{margin-top:18px;font-size:17px;color:var(--text-soft);max-width:62ch;}
+  .intro h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;max-width:27ch;}
+  .intro p{margin-top:18px;font-size:17px;color:var(--text-soft);max-width:64ch;}
 
   /* ---------- scoreboard ---------- */
   .board{padding-block:44px 8px;}
@@ -175,17 +175,22 @@
   .tag.hot{background:rgba(34,184,232,.12);color:var(--cyan-2);border-color:rgba(34,184,232,.35);}
 
   .stats{
-    margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);
+    margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);
     border-top:1px solid var(--line);
   }
   .stat{padding:24px 4px 4px;border-right:1px solid var(--line);}
   .stat:last-child{border-right:none;}
-  .stat .n{font-family:'IBM Plex Mono';font-weight:600;font-size:clamp(34px,5vw,46px);font-variant-numeric:tabular-nums;color:var(--text);}
+  .stat .n{font-family:'IBM Plex Mono';font-weight:600;font-size:clamp(30px,4.4vw,42px);font-variant-numeric:tabular-nums;color:var(--text);}
   .stat.done .n{color:var(--ok);}
-  .stat .l{margin-top:4px;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-faint);}
-  @media (max-width:560px){ .stats{grid-template-columns:1fr 1fr 1fr;} .stat{padding-inline:2px 2px;} }
+  .stat .l{margin-top:4px;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-faint);}
+  @media (max-width:560px){
+    .stats{grid-template-columns:repeat(2,1fr);}
+    .stat{padding:20px 4px 16px;}
+    .stat:nth-child(2n){border-right:none;}
+    .stat:nth-child(-n+2){border-bottom:1px solid var(--line);}
+  }
 
-  /* ---------- what changed ---------- */
+  /* ---------- impact / scan ---------- */
   .changed{padding-block:80px;}
   .changed-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;}
   @media (max-width:720px){ .changed-grid{grid-template-columns:1fr;} }
@@ -228,8 +233,8 @@
   /* ---------- roles ---------- */
   .roles{padding-block:12px 84px;}
   .roles-head{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:22px;}
-  .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-  @media (max-width:760px){ .role-grid{grid-template-columns:1fr;} }
+  .role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  @media (max-width:680px){ .role-grid{grid-template-columns:1fr;} }
   .role{
     background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px 24px;
     display:flex;flex-direction:column;gap:14px;
@@ -244,21 +249,32 @@
   .delivered-head h2{font-size:clamp(26px,3.6vw,34px);font-weight:800;}
   .delivered-head .rule{margin-top:20px;height:1px;background:var(--line);}
 
-  .cat{padding-block:52px;border-bottom:1px solid var(--line);}
-  .cat:last-child{border-bottom:none;}
-  .cat-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
-  .cat-ic{
-    width:42px;height:42px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-    background:var(--paper-2);border:1px solid var(--line);
+  .tabs-bar{display:flex;flex-wrap:wrap;gap:6px;margin:36px 0 30px;}
+  .tab-btn{
+    appearance:none;border:1px solid var(--line);background:var(--paper-2);color:var(--text-soft);
+    font-family:'Public Sans', sans-serif;font-weight:600;font-size:13.5px;
+    padding:11px 16px;border-radius:4px 4px 0 0;cursor:pointer;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
-  .cat-ic svg{width:22px;height:22px;stroke:var(--cyan-2);}
-  .cat-head h3{font-size:20px;font-weight:800;}
-  .cat-count{
+  .tab-btn:hover{color:var(--text);}
+  .tab-btn[aria-selected="true"]{background:var(--ink);color:var(--cyan);border-color:var(--ink);}
+  .tab-btn .cnt{margin-left:7px;font-size:11px;opacity:.75;}
+
+  .panel{display:none;}
+  .panel.active{display:block;}
+  .panel-head{display:flex;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap;}
+  .panel-head .dot{width:10px;height:10px;border-radius:50%;background:var(--cyan-2);flex-shrink:0;}
+  .panel-head h3{font-size:20px;font-weight:800;}
+  .pill-done{
+    font-family:'IBM Plex Mono';font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    color:#fff;background:var(--ok);padding:4px 10px;border-radius:20px;
+  }
+  .panel-count{
     margin-left:auto;font-family:'IBM Plex Mono';font-size:12.5px;color:var(--text-faint);
     border:1px solid var(--line);padding:4px 10px;border-radius:2px;white-space:nowrap;
   }
 
-  .diff{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
+  .diff{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
   @media (max-width:640px){ .diff{grid-template-columns:1fr;} }
   .diff-box{border-radius:4px;padding:16px 18px;border:1px solid;}
   .diff-box.before{background:var(--warn-soft);border-color:var(--warn-line);}
@@ -268,12 +284,17 @@
   .diff-box.after .diff-lbl{color:var(--ok);}
   .diff-box p{margin-top:8px;font-size:14.5px;color:var(--text);}
 
-  .fixes{display:flex;flex-direction:column;gap:9px;}
-  .fixes li{display:flex;gap:10px;font-size:15px;color:var(--text-soft);}
-  .fixes li::before{
-    content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--cyan);margin-top:8px;
-  }
-  .fixes .note{font-size:13.5px;color:var(--text-faint);margin-top:2px;}
+  .overflow-note{margin-top:18px;font-size:13.5px;color:var(--text-faint);font-style:italic;}
+
+  /* ---------- next sprint ---------- */
+  .next-sprint{padding-block:8px 84px;}
+  .next-card{background:var(--paper-2);border:1px solid var(--line);border-radius:4px;padding:30px 32px;}
+  .next-eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan-2);font-weight:600;}
+  .next-card p{margin-top:14px;font-size:15.5px;color:var(--text-soft);max-width:66ch;}
+  .next-grid{margin-top:22px;display:flex;flex-wrap:wrap;gap:11px 28px;}
+  .next-mod{font-size:14.5px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;}
+  .next-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);display:inline-block;flex-shrink:0;}
+  .next-qtd{color:var(--text-faint);font-weight:500;}
 
   /* ---------- closing ---------- */
   .closing{
@@ -282,7 +303,7 @@
   }
   .closing .wrap{padding-block:88px;}
   .closing-eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#7f92b3;}
-  .closing p.lede{margin-top:16px;font-size:clamp(19px,2.6vw,24px);color:#dbe4f3;max-width:44ch;font-weight:500;}
+  .closing p.lede{margin-top:16px;font-size:clamp(19px,2.6vw,24px);color:#dbe4f3;max-width:46ch;font-weight:500;}
   .closing p.lede b{color:#fff;}
   .closing h2{margin-top:34px;font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:-.01em;}
   .closing h2 .accent{
@@ -322,19 +343,19 @@
   <div class="wrap">
     <span class="hero-eyebrow"><span class="dot"></span>Sprint 13 encerrada</span>
     <h1>Entregamos<span class="accent">.</span><br>E isso muda<br>o seu dia.</h1>
-    <p class="hero-sub">Auditoria mais rápida, IA mais confiável — 48 entregas que reduzem retrabalho para quem analisa crédito e quem atende os parceiros da One7.</p>
+    <p class="hero-sub">Auditoria mais rápida, IA mais confiável — 48 entregas que travam comportamentos que atrapalhavam quem analisa proposta todos os dias.</p>
     <div class="hero-meta">
-      <div class="item"><span class="k">Board</span><span class="v">BDP — Backlog de Produtos</span></div>
+      <div class="item"><span class="k">Board</span><span class="v">Novas Soluções</span></div>
       <div class="item"><span class="k">Ciclo</span><span class="v">17/08 a 31/08/2026</span></div>
-      <div class="item"><span class="k">Foco</span><span class="v">One7ai no centro da esteira</span></div>
+      <div class="item"><span class="k">Foco</span><span class="v">One7 Mais Crédito · One7AI</span></div>
     </div>
   </div>
 </section>
 
 <section class="intro">
   <div class="wrap reveal">
-    <h2>Auditoria mais rápida, IA mais confiável.</h2>
-    <p>Na Sprint 13 do Backlog de Produtos, o time fechou 48 entregas que impactam direto quem analisa crédito e quem atende os parceiros da One7 — da auditoria ao faturamento, com a One7ai cada vez mais no centro da esteira.</p>
+    <h2>Duas semanas fechando Auditoria e Performance de ponta a ponta.</h2>
+    <p>Em Novas Soluções, o time encerrou a Sprint 13 com a meta batida: todos os itens de sustentação e aplicação da Esteira de Crédito foram entregues, com foco especial em travar comportamentos que atrapalhavam quem analisa proposta todos os dias. Este envio cobre esse board — assim que os links de Evolução &amp; Sustentação chegarem, o relatório completo passa a trazer as duas frentes juntas, nesta mesma ordem.</p>
   </div>
 </section>
 
@@ -343,8 +364,8 @@
     <div class="board-card">
       <div class="board-top">
         <div>
-          <div class="board-name">Backlog de Produtos</div>
-          <div class="board-title">BDP</div>
+          <div class="board-name">BDP · Backlog de Produtos</div>
+          <div class="board-title">Novas Soluções</div>
         </div>
         <div class="board-sprint">
           <div class="sp">Sprint 13</div>
@@ -352,12 +373,13 @@
         </div>
       </div>
       <div class="tags">
-        <span class="tag hot">Mais Crédito · Partners</span>
-        <span class="tag">Este board impacta as duas frentes de negócio da One7</span>
+        <span class="tag hot">One7 Mais Crédito · One7AI</span>
+        <span class="tag">Evolução &amp; Sustentação entram na próxima consolidação</span>
       </div>
       <div class="stats">
         <div class="stat done"><div class="n mono">48</div><div class="l">Concluídas</div></div>
-        <div class="stat"><div class="n mono">0</div><div class="l">Em validação</div></div>
+        <div class="stat"><div class="n mono">0</div><div class="l">Em revisão</div></div>
+        <div class="stat"><div class="n mono">0</div><div class="l">Em andamento</div></div>
         <div class="stat"><div class="n mono">48</div><div class="l">Total</div></div>
       </div>
     </div>
@@ -375,8 +397,8 @@
         <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
       </div>
       <div>
-        <h2>O que mudou de verdade</h2>
-        <p>Quem faz auditoria e análise de crédito vai sentir na prática: menos retrabalho manual, decisões que não vazam entre propostas do mesmo grupo, e uma IA cada vez mais cuidando dos detalhes de cada documento.</p>
+        <h2>Impacto real</h2>
+        <p>Quem analisa proposta de crédito todo dia sente estas duas semanas: consulta ao Bacen que travava mesmo com autorização em mãos, bloco de checklist que aparecia "aprovado" antes da One7ai terminar de olhar o documento, e informação de garantia que sumia da tela na hora errada. Cada correção tira um obstáculo do caminho de quem decide uma proposta.</p>
       </div>
     </div>
   </div>
@@ -387,130 +409,135 @@
     <div class="roles-head">O que você pode fazer agora</div>
     <div class="role-grid">
       <div class="role">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6 14.5h4"/></svg>
-        <h3>Crédito</h3>
-        <p>Aproveite o acesso direto ao Estudo do Cliente e os novos motivos de devolução — a esteira de auditoria ficou mais rápida e com menos erro manual.</p>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M9 12.5l2 2 4-4.5"/></svg>
+        <h3>Auditoria &amp; Performance</h3>
+        <p>Já pode confiar que um bloco só aparece como aprovado depois que a One7ai realmente terminou a análise — sem leitura equivocada no meio do caminho.</p>
       </div>
       <div class="role">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10M10 20V4M17 20v-7"/><path d="M2.5 20h19"/></svg>
-        <h3>Comercial</h3>
-        <p>Menos divergências no faturamento e na performance significam propostas mais confiáveis para negociar com o cliente.</p>
-      </div>
-      <div class="role">
-        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
-        <h3>Diretoria</h3>
-        <p>A análise automática está sendo liberada de forma controlada, plataforma por plataforma — mais previsibilidade e menos risco operacional.</p>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3.5" width="12" height="15" rx="1.3"/><path d="M8 8h6M8 11.5h6M8 15h4"/></svg>
+        <h3>Cadastro de Documentos</h3>
+        <p>Os prompts de análise por tipo de documento já estão separados entre regra técnica e regra de negócio, prontos para o time de Crédito ajustar com mais autonomia.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="delivered">
+<section class="delivered" id="delivered">
   <div class="wrap">
     <div class="delivered-head reveal">
       <h2>O que foi entregue</h2>
       <div class="rule"></div>
     </div>
 
-    <!-- IA -->
-    <div class="cat reveal">
-      <div class="cat-head">
-        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div>
-        <h3>Inteligência Artificial (One7ai)</h3>
-        <span class="cat-count mono">24 entregas</span>
+    <div class="reveal">
+      <div class="tabs-bar" role="tablist" aria-label="Módulos entregues na Sprint 13">
+        <button class="tab-btn" role="tab" id="tab-sustentacao" aria-selected="true" aria-controls="panel-sustentacao" data-panel="panel-sustentacao">Sustentação<span class="cnt mono">29</span></button>
+        <button class="tab-btn" role="tab" id="tab-cadastro" aria-selected="false" tabindex="-1" aria-controls="panel-cadastro" data-panel="panel-cadastro">Cadastro de Documentos<span class="cnt mono">12</span></button>
+        <button class="tab-btn" role="tab" id="tab-aplicacao" aria-selected="false" tabindex="-1" aria-controls="panel-aplicacao" data-panel="panel-aplicacao">Aplicação<span class="cnt mono">5</span></button>
+        <button class="tab-btn" role="tab" id="tab-auditoria" aria-selected="false" tabindex="-1" aria-controls="panel-auditoria" data-panel="panel-auditoria">Auditoria<span class="cnt mono">2</span></button>
       </div>
-      <div class="diff">
-        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>A análise automática era liberada para todas as plataformas de uma vez, dificultando identificar de onde vinham os erros de timeout.</p></div>
-        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>A liberação é feita plataforma por plataforma, com acompanhamento próximo antes de expandir para as demais.</p></div>
-      </div>
-      <ul class="fixes">
-        <li>Revisão de 12 prompts de extração automática por tipo de documento — Endividamento, BACEN, Faturamento, Balanço/DRE, Relação de Frota, Curva ABC, Recuperação Judicial, Contrato Social e Imposto de Renda, entre outros</li>
-        <li>Bloqueio de aprovação de blocos e documentos antes da conclusão da análise automática</li>
-        <li>Correção de falhas de reprocessamento e recuperação da análise após timeout</li>
-        <li>Reorganização dos prompts técnicos, separando regras de negócio da lógica de extração</li>
-        <li>Tratamento automático de timeout na importação de documentos, com nova tentativa</li>
-        <li>+5 ajustes de precisão da IA <span class="note">(dados de emissão, contrato social, legibilidade de endividamento, troca da esteira antiga e reinstabilidade de alterações em prompts)</span></li>
-      </ul>
-    </div>
 
-    <!-- Auditoria -->
-    <div class="cat reveal">
-      <div class="cat-head">
-        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
-        <h3>Auditoria</h3>
-        <span class="cat-count mono">7 entregas</span>
+      <div class="panel active" id="panel-sustentacao" role="tabpanel" aria-labelledby="tab-sustentacao">
+        <div class="panel-head">
+          <span class="dot"></span><h3>Sustentação</h3><span class="pill-done">Concluído</span>
+          <span class="panel-count mono">29 itens</span>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Mesmo com a autorização do Bacen anexada e já validada pela One7ai, a consulta travava e exibia erro no meio do fluxo.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>A Consulta Bacen reconhece a autorização validada e roda sem bloqueio indevido no fluxo de Performance.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Um documento de endividamento já aprovado pelo Crédito era reprovado pela One7ai por um critério de data mal aplicado.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>A causa da divergência foi identificada e corrigida, evitando reprovar documentos que na prática já estavam válidos.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Um bloco do checklist podia aparecer como "Aprovado" mesmo antes da análise da One7ai ter sido concluída.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O status só é exibido como aprovado depois que a análise termina, sem leitura equivocada durante a auditoria.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Quando a leitura de um documento pela One7ai demorava mais que o esperado, o processo travava e obrigava recomeçar do zero.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O sistema trata melhor as importações mais demoradas e só mostra erro quando o tempo limite é mesmo inevitável.</p></div>
+        </div>
+        <p class="overflow-note">+ 25 itens adicionais (Auditoria, Endividamento, Performance)</p>
       </div>
-      <div class="diff">
-        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Aprovações e motivos de reprovação de uma empresa podiam ser replicados indevidamente para outras propostas do mesmo grupo econômico.</p></div>
-        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>Cada proposta mantém sua própria análise documental — decisões de uma empresa não afetam mais as demais do grupo.</p></div>
-      </div>
-      <ul class="fixes">
-        <li>Novo acesso direto ao Estudo do Cliente durante a análise</li>
-        <li>Novos motivos de devolução e botão "Devolver" habilitado na auditoria ativa</li>
-        <li>Prevenção de duplicidade de documentação enviada</li>
-        <li>Status atualizado automaticamente após upload inteligente, sem precisar atualizar a tela</li>
-        <li>Correção de quebra visual ao apresentar múltiplos documentos</li>
-        <li>Tipo de garantia agora exibido no Giro Parcelado</li>
-      </ul>
-    </div>
 
-    <!-- Endividamento -->
-    <div class="cat reveal">
-      <div class="cat-head">
-        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 6l-5.5 3M12 6l5.5 3M3 15.5h7M14 15.5h7M6.5 9l-3.5 6.5h7zM17.5 9l-3.5 6.5h7z"/></svg></div>
-        <h3>Endividamento</h3>
-        <span class="cat-count mono">4 entregas</span>
+      <div class="panel" id="panel-cadastro" role="tabpanel" aria-labelledby="tab-cadastro" hidden>
+        <div class="panel-head">
+          <span class="dot"></span><h3>Cadastro de Documentos</h3><span class="pill-done">Concluído</span>
+          <span class="panel-count mono">12 itens</span>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>As instruções técnicas da One7ai para ler documentos de Endividamento vinham misturadas com as regras de negócio.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>A análise de Endividamento passa a ter prompt próprio, separando o técnico da regra de negócio — mais fácil de ajustar.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>O prompt de análise do BACEN reunia comando técnico e regra de negócio no mesmo texto, dificultando qualquer manutenção.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O BACEN ganhou prompt segregado, permitindo ao time de Crédito ajustar regras sem depender de mudança técnica.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Regras de negócio da análise de Faturamento ficavam misturadas a comandos técnicos dentro do mesmo prompt da IA.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O prompt de Faturamento foi separado, dando ao Crédito mais autonomia para ajustar os critérios de análise.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>A leitura do Balanço Patrimonial pela One7ai usava um único prompt, misturando configuração técnica e regra funcional.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O Balanço Patrimonial passa a ter prompt segregado, com regras de negócio editáveis pelo time de Crédito.</p></div>
+        </div>
+        <p class="overflow-note">+ 8 itens adicionais (DRE, Balanço/DRE, Relação de Frota, Curva ABC de Clientes, Recuperação Judicial, Contrato Social, Imposto de Renda)</p>
       </div>
-      <div class="diff">
-        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Instituições apareciam duplicadas no Histórico Detalhado do Endividamento, inflando o total de risco calculado.</p></div>
-        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>Cada instituição aparece uma única vez, com o total do limite e o risco calculados corretamente.</p></div>
-      </div>
-      <ul class="fixes">
-        <li>Consulta Bacen já reconhece autorizações incluídas na IA sem bloqueio indevido</li>
-        <li>Correção de erro ao buscar dados na Consulta Bacen</li>
-        <li>Bacen agora disponível na busca de instituição</li>
-      </ul>
-    </div>
 
-    <!-- Performance & Faturamento -->
-    <div class="cat reveal">
-      <div class="cat-head">
-        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-6 4 3 6-8"/><path d="M14 6h4v4"/></svg></div>
-        <h3>Performance &amp; Faturamento</h3>
-        <span class="cat-count mono">6 entregas</span>
+      <div class="panel" id="panel-aplicacao" role="tabpanel" aria-labelledby="tab-aplicacao" hidden>
+        <div class="panel-head">
+          <span class="dot"></span><h3>Aplicação</h3><span class="pill-done">Concluído</span>
+          <span class="panel-count mono">5 itens</span>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Prompts técnicos e regras de negócio da One7ai ficavam misturados na tela de Cadastro de Documentos, sem responsabilidade clara.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>Crédito e Tecnologia passam a ajustar cada parte no seu próprio espaço, com mais autonomia e rastreabilidade nas mudanças.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Um mês sem faturamento declarado aparecia como R$ 0,00, do mesmo jeito que um mês em que o cliente realmente informou zero.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O sistema diferencia mês com R$ 0,00 informado de mês ainda não declarado, evitando distorção na análise de faturamento.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Ao cadastrar um produto com garantia, campos obrigatórios e opcionais se confundiam e travavam o salvamento sem motivo claro.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O tipo de garantia é obrigatório e os demais campos ficam opcionais, permitindo salvar o produto sem bloqueios indevidos.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Ao analisar uma proposta de Giro Parcelado, o tipo de garantia vinculado não aparecia com clareza para quem analisava.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O tipo de garantia do Giro Parcelado passa a ser exibido, ajudando a aplicar a política correta durante a análise.</p></div>
+        </div>
+        <p class="overflow-note">+ 1 item adicional (Estudo do Cliente na Auditoria)</p>
       </div>
-      <div class="diff">
-        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Um mês sem faturamento informado era tratado como R$ 0,00, mesmo quando o documento simplesmente ainda não trazia aquele dado.</p></div>
-        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O sistema diferencia um mês com R$ 0,00 declarado de um mês ainda "Não declarado", evitando distorcer a análise.</p></div>
-      </div>
-      <ul class="fixes">
-        <li>Correção de ausência de dados performados no Performance</li>
-        <li>Remoção de tooltip indevido ao salvar produto em Informações de Mercado</li>
-        <li>Ajuste de obrigatoriedade e comportamento de Garantia e Concentração</li>
-        <li>Investigação e correção de duplicidade de faturamento após atuação entre esteiras</li>
-        <li>Correção de erro ao excluir ano no resumo de faturamento</li>
-      </ul>
-    </div>
 
-    <!-- Outras entregas -->
-    <div class="cat reveal">
-      <div class="cat-head">
-        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.2"/></svg></div>
-        <h3>Outras entregas</h3>
-        <span class="cat-count mono">7 entregas</span>
+      <div class="panel" id="panel-auditoria" role="tabpanel" aria-labelledby="tab-auditoria" hidden>
+        <div class="panel-head">
+          <span class="dot"></span><h3>Auditoria</h3><span class="pill-done">Concluído</span>
+          <span class="panel-count mono">2 itens</span>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Ao mudar a proposta de Auditoria para Performance, o campo de observações tinha um limite de caracteres curto demais.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O limite de caracteres foi ampliado, permitindo registrar observações mais completas na mudança de etapa.</p></div>
+        </div>
+        <div class="diff">
+          <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>O acesso ao Estudo do Cliente pela Auditoria só funcionava para propostas de renovação.</p></div>
+          <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O mesmo acesso ao Estudo do Cliente passa a valer também para propostas de Reativação.</p></div>
+        </div>
       </div>
-      <div class="diff">
-        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>A analista podia esbarrar em erro ao concluir a devolução de uma proposta, sem saber se a ação tinha sido salva.</p></div>
-        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O fluxo de inclusão e devolução do parecer é concluído sem erro, com histórico registrado corretamente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="next-sprint">
+  <div class="wrap reveal">
+    <div class="next-card">
+      <div class="next-eyebrow">Próxima sprint · Sprint 14 (31/08 a 14/09/2026)</div>
+      <p>A Sprint 14 começou ontem e o time já chega com o foco definido: fechar o que restou de Sustentação e avançar em Aplicação. Uma frente nova entra no radar — Parametrizações, telas de configuração para o time de Crédito controlar como a One7ai é usada, documento por documento.</p>
+      <div class="next-grid">
+        <div class="next-mod"><span class="next-dot"></span>Sustentação <span class="next-qtd mono">18 itens</span></div>
+        <div class="next-mod"><span class="next-dot"></span>Aplicação <span class="next-qtd mono">6 itens</span></div>
+        <div class="next-mod"><span class="next-dot"></span>Parametrizações <span class="next-qtd mono">5 itens</span></div>
+        <div class="next-mod"><span class="next-dot"></span>Auditoria <span class="next-qtd mono">3 itens</span></div>
       </div>
-      <ul class="fixes">
-        <li>Correção de duplicidade na soma de Ativo na Performance</li>
-        <li>Melhoria na visualização do parecer na nova esteira</li>
-        <li>Ações em processamento ajustadas para reduzir a sensação de abandono na tela</li>
-        <li>Porta atualizada automaticamente após análise do Faturamento, sem refresh</li>
-        <li>Aumento do limite de caracteres no fluxo de mudança de etapa</li>
-        <li>Replicação do fluxo para propostas de Reativação</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -518,10 +545,10 @@
 <section class="closing">
   <div class="wrap reveal">
     <div class="closing-eyebrow">Para fechar</div>
-    <p class="lede">Foram <b>48 entregas</b> nesta Sprint 13 — cada uma delas significa uma auditoria mais rápida, um cliente que não sente o erro, uma operação que segue rodando sem travar.</p>
+    <p class="lede">Foram <b>48 entregas</b> nesta Sprint 13 — pontas soltas fechadas, menos bloqueio para quem analisa crédito, e mais precisão na leitura automática de documentos pela One7ai.</p>
     <h2>Pra frente<br>e pra cima<span class="accent">. Sempre.</span></h2>
-    <a class="cta" href="#delivered" onclick="document.querySelector('.delivered').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});return false;">
-      Relatório completo
+    <a class="cta" href="https://one7.atlassian.net/jira/software/c/projects/BDP/boards/191/reports/sprint-retrospective?sprint=1567" target="_blank" rel="noopener noreferrer">
+      Ver Sprint 14 em andamento
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
     </a>
   </div>
@@ -530,7 +557,7 @@
 <footer>
   <div class="wrap">
     <span>ONE7 GRUPO</span>
-    <span>BDP · SPRINT 13 · 17/08&ndash;31/08/26</span>
+    <span>NOVAS SOLUÇÕES · SPRINT 13 · 17/08&ndash;31/08/26</span>
     <span>GERADO EM 31/08/2026</span>
   </div>
 </footer>
@@ -541,16 +568,41 @@
     var reveals = document.querySelectorAll('.reveal');
     if(reduced || !('IntersectionObserver' in window)){
       reveals.forEach(function(el){ el.classList.add('is-visible'); });
-      return;
+    } else {
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+      reveals.forEach(function(el){ io.observe(el); });
     }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
+  })();
+
+  (function(){
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.panel'));
+    function activate(tab, moveFocus){
+      tabs.forEach(function(t){
+        var selected = t === tab;
+        t.setAttribute('aria-selected', selected ? 'true' : 'false');
+        t.tabIndex = selected ? 0 : -1;
       });
-    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
-    reveals.forEach(function(el){ io.observe(el); });
+      panels.forEach(function(p){
+        var show = p.id === tab.getAttribute('data-panel');
+        p.hidden = !show;
+        p.classList.toggle('active', show);
+      });
+      if(moveFocus){ tab.focus(); }
+    }
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){ activate(tab, false); });
+      tab.addEventListener('keydown', function(e){
+        if(e.key === 'ArrowRight'){ e.preventDefault(); activate(tabs[(i+1) % tabs.length], true); }
+        if(e.key === 'ArrowLeft'){ e.preventDefault(); activate(tabs[(i-1+tabs.length) % tabs.length], true); }
+      });
+    });
   })();
 </script>
