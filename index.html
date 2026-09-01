@@ -24,7 +24,6 @@
     --line:#dde3ef;
     --card:#ffffff;
     --shadow: 0 1px 2px rgba(16,24,50,.04), 0 8px 24px -12px rgba(16,24,50,.12);
-    --sidebar-w: 208px;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
@@ -101,51 +100,6 @@
   .brand-mark{height:20px;width:auto;display:block;}
   .brand .g{font-family:'Public Sans';font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8fb4c9;}
   .topbar .date{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.05em;color:#9db3d1;}
-
-  /* ---------- site nav (sidebar) ---------- */
-  .site-nav{background:var(--ink-2);border-bottom:1px solid rgba(255,255,255,.08);}
-  .site-nav .wrap{display:flex;align-items:center;flex-wrap:wrap;}
-  .nav-eyebrow{
-    font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
-    color:#5f7396;padding-right:16px;margin-right:4px;border-right:1px solid rgba(255,255,255,.1);
-  }
-  .nav-links{display:flex;gap:2px;}
-  .nav-link{
-    display:inline-flex;align-items:center;gap:7px;
-    padding:13px 16px;font-family:'IBM Plex Mono';font-size:12.5px;font-weight:500;letter-spacing:.03em;
-    color:#9db3d1;text-decoration:none;border-bottom:2px solid transparent;
-    transition:color .15s ease, border-color .15s ease, background .15s ease;
-  }
-  .nav-link:hover{color:#fff;}
-  .nav-link.active{color:#fff;border-color:var(--cyan);}
-  .nav-link .tag{
-    font-family:'Public Sans';font-size:9.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-    background:rgba(34,184,232,.15);color:#6fdcff;padding:2px 7px;border-radius:20px;
-  }
-  @media (max-width:520px){ .nav-eyebrow{display:none;} }
-
-  @media (min-width:900px){
-    .site-nav{
-      position:fixed;top:64px;left:0;bottom:0;width:var(--sidebar-w);
-      border-bottom:none;border-right:1px solid rgba(255,255,255,.08);
-      overflow-y:auto;z-index:40;
-    }
-    .site-nav .wrap{
-      flex-direction:column;align-items:stretch;width:100%;max-width:none;
-      padding:26px 18px;gap:2px;
-    }
-    .nav-eyebrow{
-      border-right:none;padding:0 2px 14px;margin:0 0 8px;
-      border-bottom:1px solid rgba(255,255,255,.1);
-    }
-    .nav-links{flex-direction:column;gap:2px;}
-    .nav-link{
-      border-bottom:none;border-left:2px solid transparent;border-radius:0 3px 3px 0;
-      padding:11px 14px;justify-content:space-between;
-    }
-    .nav-link.active{background:rgba(34,184,232,.08);border-left-color:var(--cyan);}
-    #page{margin-left:var(--sidebar-w);}
-  }
 
   /* ---------- hero ---------- */
   .hero{
@@ -381,7 +335,6 @@
   a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
 </style>
 
-<div class="site-header">
 <header class="topbar">
   <div class="wrap">
     <div class="brand">
@@ -390,18 +343,7 @@
     <div class="date mono">AGOSTO / 2026</div>
   </div>
 </header>
-<nav class="site-nav">
-  <div class="wrap">
-    <span class="nav-eyebrow">Sprints</span>
-    <div class="nav-links">
-      <a class="nav-link active" href="#top">Sprint 13</a>
-      <a class="nav-link" href="https://one7.atlassian.net/jira/software/c/projects/BDP/boards/191/reports/sprint-retrospective?sprint=1567" target="_blank" rel="noopener noreferrer">Sprint 14 <span class="tag">Em andamento</span></a>
-    </div>
-  </div>
-</nav>
-</div>
 
-<div id="page">
 <section class="hero" id="top">
   <div class="hero-glow"></div>
   <div class="wrap">
@@ -625,7 +567,6 @@
     <span>GERADO EM 31/08/2026</span>
   </div>
 </footer>
-</div>
 
 <script>
   (function(){
