@@ -1,0 +1,556 @@
+<title>BDP Sprint 13</title>
+<meta name="description" content="Release notes da Sprint 13 do Backlog de Produtos da One7: 48 entregas em auditoria, crédito e One7ai." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ink:#0a1526;
+    --ink-2:#101f38;
+    --paper:#f4f6fb;
+    --paper-2:#e7ebf4;
+    --cyan:#22b8e8;
+    --cyan-2:#0a90bd;
+    --violet:#6a6ef2;
+    --ok:#1f9d6b;
+    --ok-soft:#e3f4ec;
+    --ok-line:#bfe4d2;
+    --warn:#d94f42;
+    --warn-soft:#fbe9e7;
+    --warn-line:#f1c9c3;
+    --text:#182238;
+    --text-soft:#54617c;
+    --text-faint:#818da5;
+    --line:#dde3ef;
+    --card:#ffffff;
+    --shadow: 0 1px 2px rgba(16,24,50,.04), 0 8px 24px -12px rgba(16,24,50,.12);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0c1526;
+      --paper-2:#101c33;
+      --text:#e7ebf6;
+      --text-soft:#aab4cc;
+      --text-faint:#7683a0;
+      --line:#22304a;
+      --card:#121f38;
+      --ok-soft:#0f2a20;
+      --ok-line:#1c4a37;
+      --warn-soft:#2d1512;
+      --warn-line:#4a241e;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0c1526;
+    --paper-2:#101c33;
+    --text:#e7ebf6;
+    --text-soft:#aab4cc;
+    --text-faint:#7683a0;
+    --line:#22304a;
+    --card:#121f38;
+    --ok-soft:#0f2a20;
+    --ok-line:#1c4a37;
+    --warn-soft:#2d1512;
+    --warn-line:#4a241e;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Public Sans', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.55;
+  }
+  h1,h2,h3,h4{
+    font-family:'Archivo', ui-sans-serif, system-ui, sans-serif;
+    text-wrap:balance;
+    margin:0;
+    color:var(--text);
+  }
+  p{margin:0;}
+  ul{margin:0;padding:0;list-style:none;}
+  .mono{font-family:'IBM Plex Mono', ui-monospace, monospace;}
+  a{color:inherit;}
+  img{display:block;}
+  section{position:relative;}
+
+  .wrap{max-width:1040px;margin:0 auto;padding-inline:28px;}
+  @media (max-width:640px){ .wrap{padding-inline:20px;} }
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.is-visible{opacity:1;transform:none;}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- topbar ---------- */
+  .topbar{
+    background:var(--ink);
+    color:#fff;
+  }
+  .topbar .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding-block:18px;
+  }
+  .brand{display:flex;align-items:baseline;gap:8px;font-family:'Archivo';font-weight:900;font-size:19px;letter-spacing:.01em;}
+  .brand .g{font-family:'Public Sans';font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8fb4c9;}
+  .topbar .date{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.05em;color:#9db3d1;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:
+      radial-gradient(60% 55% at 22% 0%, rgba(34,184,232,.35), transparent 60%),
+      radial-gradient(55% 60% at 85% 15%, rgba(106,110,242,.3), transparent 60%),
+      linear-gradient(180deg, var(--ink) 0%, #081120 100%);
+    color:#fff;
+    overflow:hidden;
+  }
+  .hero-glow{
+    position:absolute;inset:0;
+    background:radial-gradient(38% 48% at 50% 38%, rgba(60,210,245,.28), transparent 70%);
+    animation:pulse 7s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:.55;transform:scale(1);}
+    50%{opacity:1;transform:scale(1.08);}
+  }
+  @media (prefers-reduced-motion: reduce){ .hero-glow{animation:none;} }
+  .hero .wrap{position:relative;padding-block:96px 76px;}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+    color:#a9e6f8;background:rgba(34,184,232,.12);border:1px solid rgba(34,184,232,.35);
+    padding:6px 12px;border-radius:2px;
+  }
+  .hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#4bd6ff;box-shadow:0 0 0 4px rgba(75,214,255,.18);}
+  .hero h1{
+    font-size:clamp(48px,9vw,92px);
+    font-weight:900;
+    line-height:.98;
+    margin-top:22px;
+    letter-spacing:-.02em;
+  }
+  .hero h1 .accent{
+    background:linear-gradient(92deg,#4bd6ff, #8b8ffb 70%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-sub{
+    margin-top:20px;font-size:clamp(18px,2.6vw,24px);color:#c4d3ea;font-weight:500;max-width:34ch;
+  }
+  .hero-meta{
+    margin-top:52px;display:flex;flex-wrap:wrap;gap:28px;
+    border-top:1px solid rgba(255,255,255,.14);padding-top:22px;
+  }
+  .hero-meta .item{display:flex;flex-direction:column;gap:4px;}
+  .hero-meta .k{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#7f92b3;}
+  .hero-meta .v{font-family:'Archivo';font-weight:700;font-size:15px;color:#eef3fb;}
+
+  /* ---------- intro ---------- */
+  .intro{padding-block:76px 8px;}
+  .intro h2{font-size:clamp(26px,3.6vw,36px);font-weight:800;max-width:20ch;}
+  .intro p{margin-top:18px;font-size:17px;color:var(--text-soft);max-width:62ch;}
+
+  /* ---------- scoreboard ---------- */
+  .board{padding-block:44px 8px;}
+  .board-card{
+    background:var(--card);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);
+    padding:30px 32px;
+  }
+  .board-top{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:18px;}
+  .board-name{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-faint);}
+  .board-title{font-family:'Archivo';font-weight:800;font-size:22px;margin-top:6px;}
+  .board-sprint{text-align:right;}
+  .board-sprint .sp{font-family:'IBM Plex Mono';font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan-2);font-weight:600;}
+  .board-sprint .rng{font-family:'IBM Plex Mono';font-size:13px;color:var(--text-soft);margin-top:3px;}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;}
+  .tag{
+    font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:2px;
+    background:var(--paper-2);color:var(--text-soft);border:1px solid var(--line);
+  }
+  .tag.hot{background:rgba(34,184,232,.12);color:var(--cyan-2);border-color:rgba(34,184,232,.35);}
+
+  .stats{
+    margin-top:26px;display:grid;grid-template-columns:repeat(3,1fr);
+    border-top:1px solid var(--line);
+  }
+  .stat{padding:24px 4px 4px;border-right:1px solid var(--line);}
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:'IBM Plex Mono';font-weight:600;font-size:clamp(34px,5vw,46px);font-variant-numeric:tabular-nums;color:var(--text);}
+  .stat.done .n{color:var(--ok);}
+  .stat .l{margin-top:4px;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--text-faint);}
+  @media (max-width:560px){ .stats{grid-template-columns:1fr 1fr 1fr;} .stat{padding-inline:2px 2px;} }
+
+  /* ---------- what changed ---------- */
+  .changed{padding-block:80px;}
+  .changed-grid{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;}
+  @media (max-width:720px){ .changed-grid{grid-template-columns:1fr;} }
+  .scan{
+    width:200px;height:200px;position:relative;justify-self:start;
+  }
+  .scan .doc{
+    position:absolute;left:26px;width:140px;height:170px;border-radius:6px;
+    background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+  }
+  .scan .doc:nth-child(1){transform:rotate(-7deg);top:16px;}
+  .scan .doc:nth-child(2){transform:rotate(4deg);top:10px;}
+  .scan .doc:nth-child(3){top:6px;}
+  .scan .doc .ln{height:6px;border-radius:3px;background:var(--paper-2);margin:14px 16px 0;}
+  .scan .doc .ln.w1{width:60%;}
+  .scan .doc .ln.w2{width:80%;}
+  .scan .doc .ln.w3{width:40%;}
+  .scan .beam{
+    position:absolute;left:20px;right:20px;height:2px;top:20px;
+    background:linear-gradient(90deg, transparent, var(--cyan), transparent);
+    box-shadow:0 0 12px 1px var(--cyan);
+    animation:scan 3.2s ease-in-out infinite;
+  }
+  @keyframes scan{
+    0%,100%{top:16px;opacity:0;}
+    10%{opacity:1;}
+    50%{top:172px;opacity:1;}
+    60%{opacity:0;}
+  }
+  .scan .badge{
+    position:absolute;right:6px;bottom:8px;width:34px;height:34px;border-radius:50%;
+    background:var(--ok);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);
+  }
+  .scan .badge svg{width:18px;height:18px;stroke:#fff;}
+  @media (prefers-reduced-motion: reduce){ .scan .beam{animation:none;top:90px;opacity:.7;} }
+
+  .changed h2{font-size:clamp(24px,3.2vw,30px);font-weight:800;}
+  .changed p{margin-top:14px;font-size:16.5px;color:var(--text-soft);max-width:56ch;}
+
+  /* ---------- roles ---------- */
+  .roles{padding-block:12px 84px;}
+  .roles-head{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);margin-bottom:22px;}
+  .role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  @media (max-width:760px){ .role-grid{grid-template-columns:1fr;} }
+  .role{
+    background:var(--card);border:1px solid var(--line);border-radius:4px;padding:26px 24px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .role .icon{width:34px;height:34px;stroke:var(--cyan-2);}
+  .role h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;}
+  .role p{font-size:15px;color:var(--text-soft);}
+
+  /* ---------- delivered ---------- */
+  .delivered{padding-block:20px 60px;}
+  .delivered-head{padding-block:36px 8px;}
+  .delivered-head h2{font-size:clamp(26px,3.6vw,34px);font-weight:800;}
+  .delivered-head .rule{margin-top:20px;height:1px;background:var(--line);}
+
+  .cat{padding-block:52px;border-bottom:1px solid var(--line);}
+  .cat:last-child{border-bottom:none;}
+  .cat-head{display:flex;align-items:center;gap:14px;margin-bottom:22px;}
+  .cat-ic{
+    width:42px;height:42px;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+    background:var(--paper-2);border:1px solid var(--line);
+  }
+  .cat-ic svg{width:22px;height:22px;stroke:var(--cyan-2);}
+  .cat-head h3{font-size:20px;font-weight:800;}
+  .cat-count{
+    margin-left:auto;font-family:'IBM Plex Mono';font-size:12.5px;color:var(--text-faint);
+    border:1px solid var(--line);padding:4px 10px;border-radius:2px;white-space:nowrap;
+  }
+
+  .diff{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px;}
+  @media (max-width:640px){ .diff{grid-template-columns:1fr;} }
+  .diff-box{border-radius:4px;padding:16px 18px;border:1px solid;}
+  .diff-box.before{background:var(--warn-soft);border-color:var(--warn-line);}
+  .diff-box.after{background:var(--ok-soft);border-color:var(--ok-line);}
+  .diff-lbl{font-family:'IBM Plex Mono';font-size:10.5px;letter-spacing:.1em;font-weight:600;}
+  .diff-box.before .diff-lbl{color:var(--warn);}
+  .diff-box.after .diff-lbl{color:var(--ok);}
+  .diff-box p{margin-top:8px;font-size:14.5px;color:var(--text);}
+
+  .fixes{display:flex;flex-direction:column;gap:9px;}
+  .fixes li{display:flex;gap:10px;font-size:15px;color:var(--text-soft);}
+  .fixes li::before{
+    content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:var(--cyan);margin-top:8px;
+  }
+  .fixes .note{font-size:13.5px;color:var(--text-faint);margin-top:2px;}
+
+  /* ---------- closing ---------- */
+  .closing{
+    background:linear-gradient(180deg, #081120 0%, var(--ink) 100%);
+    color:#fff;
+  }
+  .closing .wrap{padding-block:88px;}
+  .closing-eyebrow{font-family:'IBM Plex Mono';font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#7f92b3;}
+  .closing p.lede{margin-top:16px;font-size:clamp(19px,2.6vw,24px);color:#dbe4f3;max-width:44ch;font-weight:500;}
+  .closing p.lede b{color:#fff;}
+  .closing h2{margin-top:34px;font-size:clamp(30px,5vw,46px);font-weight:900;letter-spacing:-.01em;}
+  .closing h2 .accent{
+    background:linear-gradient(92deg,#4bd6ff,#8b8ffb 70%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .cta{
+    margin-top:38px;display:inline-flex;align-items:center;gap:10px;
+    background:var(--cyan);color:#04212d;font-weight:700;font-size:15px;
+    padding:14px 22px;border-radius:2px;text-decoration:none;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .cta:hover{background:#4bd6ff;transform:translateY(-1px);}
+  .cta:focus-visible{outline:2px solid #fff;outline-offset:3px;}
+  .cta svg{width:16px;height:16px;stroke:#04212d;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#8195b5;}
+  footer .wrap{
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+    padding-block:24px;border-top:1px solid rgba(255,255,255,.08);
+    font-family:'IBM Plex Mono';font-size:11.5px;letter-spacing:.03em;
+  }
+
+  a:focus-visible, button:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">ONE7<span class="g">GRUPO</span></div>
+    <div class="date mono">AGOSTO / 2026</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <span class="hero-eyebrow"><span class="dot"></span>Sprint 13 encerrada</span>
+    <h1>Entregamos<span class="accent">.</span><br>E isso muda<br>o seu dia.</h1>
+    <p class="hero-sub">Auditoria mais rápida, IA mais confiável — 48 entregas que reduzem retrabalho para quem analisa crédito e quem atende os parceiros da One7.</p>
+    <div class="hero-meta">
+      <div class="item"><span class="k">Board</span><span class="v">BDP — Backlog de Produtos</span></div>
+      <div class="item"><span class="k">Ciclo</span><span class="v">17/08 a 31/08/2026</span></div>
+      <div class="item"><span class="k">Foco</span><span class="v">One7ai no centro da esteira</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="wrap reveal">
+    <h2>Auditoria mais rápida, IA mais confiável.</h2>
+    <p>Na Sprint 13 do Backlog de Produtos, o time fechou 48 entregas que impactam direto quem analisa crédito e quem atende os parceiros da One7 — da auditoria ao faturamento, com a One7ai cada vez mais no centro da esteira.</p>
+  </div>
+</section>
+
+<section class="board">
+  <div class="wrap reveal">
+    <div class="board-card">
+      <div class="board-top">
+        <div>
+          <div class="board-name">Backlog de Produtos</div>
+          <div class="board-title">BDP</div>
+        </div>
+        <div class="board-sprint">
+          <div class="sp">Sprint 13</div>
+          <div class="rng">17/08 → 31/08/2026</div>
+        </div>
+      </div>
+      <div class="tags">
+        <span class="tag hot">Mais Crédito · Partners</span>
+        <span class="tag">Este board impacta as duas frentes de negócio da One7</span>
+      </div>
+      <div class="stats">
+        <div class="stat done"><div class="n mono">48</div><div class="l">Concluídas</div></div>
+        <div class="stat"><div class="n mono">0</div><div class="l">Em validação</div></div>
+        <div class="stat"><div class="n mono">48</div><div class="l">Total</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="changed">
+  <div class="wrap reveal">
+    <div class="changed-grid">
+      <div class="scan" aria-hidden="true">
+        <div class="doc"><div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div></div>
+        <div class="doc"><div class="ln w2"></div><div class="ln w1"></div><div class="ln w3"></div></div>
+        <div class="doc"><div class="ln w3"></div><div class="ln w2"></div><div class="ln w1"></div></div>
+        <div class="beam"></div>
+        <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></div>
+      </div>
+      <div>
+        <h2>O que mudou de verdade</h2>
+        <p>Quem faz auditoria e análise de crédito vai sentir na prática: menos retrabalho manual, decisões que não vazam entre propostas do mesmo grupo, e uma IA cada vez mais cuidando dos detalhes de cada documento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="roles">
+  <div class="wrap reveal">
+    <div class="roles-head">O que você pode fazer agora</div>
+    <div class="role-grid">
+      <div class="role">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M2.5 10h19"/><path d="M6 14.5h4"/></svg>
+        <h3>Crédito</h3>
+        <p>Aproveite o acesso direto ao Estudo do Cliente e os novos motivos de devolução — a esteira de auditoria ficou mais rápida e com menos erro manual.</p>
+      </div>
+      <div class="role">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V10M10 20V4M17 20v-7"/><path d="M2.5 20h19"/></svg>
+        <h3>Comercial</h3>
+        <p>Menos divergências no faturamento e na performance significam propostas mais confiáveis para negociar com o cliente.</p>
+      </div>
+      <div class="role">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+        <h3>Diretoria</h3>
+        <p>A análise automática está sendo liberada de forma controlada, plataforma por plataforma — mais previsibilidade e menos risco operacional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="delivered">
+  <div class="wrap">
+    <div class="delivered-head reveal">
+      <h2>O que foi entregue</h2>
+      <div class="rule"></div>
+    </div>
+
+    <!-- IA -->
+    <div class="cat reveal">
+      <div class="cat-head">
+        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/></svg></div>
+        <h3>Inteligência Artificial (One7ai)</h3>
+        <span class="cat-count mono">24 entregas</span>
+      </div>
+      <div class="diff">
+        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>A análise automática era liberada para todas as plataformas de uma vez, dificultando identificar de onde vinham os erros de timeout.</p></div>
+        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>A liberação é feita plataforma por plataforma, com acompanhamento próximo antes de expandir para as demais.</p></div>
+      </div>
+      <ul class="fixes">
+        <li>Revisão de 12 prompts de extração automática por tipo de documento — Endividamento, BACEN, Faturamento, Balanço/DRE, Relação de Frota, Curva ABC, Recuperação Judicial, Contrato Social e Imposto de Renda, entre outros</li>
+        <li>Bloqueio de aprovação de blocos e documentos antes da conclusão da análise automática</li>
+        <li>Correção de falhas de reprocessamento e recuperação da análise após timeout</li>
+        <li>Reorganização dos prompts técnicos, separando regras de negócio da lógica de extração</li>
+        <li>Tratamento automático de timeout na importação de documentos, com nova tentativa</li>
+        <li>+5 ajustes de precisão da IA <span class="note">(dados de emissão, contrato social, legibilidade de endividamento, troca da esteira antiga e reinstabilidade de alterações em prompts)</span></li>
+      </ul>
+    </div>
+
+    <!-- Auditoria -->
+    <div class="cat reveal">
+      <div class="cat-head">
+        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3.5h7l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1z"/><path d="M9 12.5l2 2 4-4.5"/></svg></div>
+        <h3>Auditoria</h3>
+        <span class="cat-count mono">7 entregas</span>
+      </div>
+      <div class="diff">
+        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Aprovações e motivos de reprovação de uma empresa podiam ser replicados indevidamente para outras propostas do mesmo grupo econômico.</p></div>
+        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>Cada proposta mantém sua própria análise documental — decisões de uma empresa não afetam mais as demais do grupo.</p></div>
+      </div>
+      <ul class="fixes">
+        <li>Novo acesso direto ao Estudo do Cliente durante a análise</li>
+        <li>Novos motivos de devolução e botão "Devolver" habilitado na auditoria ativa</li>
+        <li>Prevenção de duplicidade de documentação enviada</li>
+        <li>Status atualizado automaticamente após upload inteligente, sem precisar atualizar a tela</li>
+        <li>Correção de quebra visual ao apresentar múltiplos documentos</li>
+        <li>Tipo de garantia agora exibido no Giro Parcelado</li>
+      </ul>
+    </div>
+
+    <!-- Endividamento -->
+    <div class="cat reveal">
+      <div class="cat-head">
+        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M12 6l-5.5 3M12 6l5.5 3M3 15.5h7M14 15.5h7M6.5 9l-3.5 6.5h7zM17.5 9l-3.5 6.5h7z"/></svg></div>
+        <h3>Endividamento</h3>
+        <span class="cat-count mono">4 entregas</span>
+      </div>
+      <div class="diff">
+        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Instituições apareciam duplicadas no Histórico Detalhado do Endividamento, inflando o total de risco calculado.</p></div>
+        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>Cada instituição aparece uma única vez, com o total do limite e o risco calculados corretamente.</p></div>
+      </div>
+      <ul class="fixes">
+        <li>Consulta Bacen já reconhece autorizações incluídas na IA sem bloqueio indevido</li>
+        <li>Correção de erro ao buscar dados na Consulta Bacen</li>
+        <li>Bacen agora disponível na busca de instituição</li>
+      </ul>
+    </div>
+
+    <!-- Performance & Faturamento -->
+    <div class="cat reveal">
+      <div class="cat-head">
+        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l5-6 4 3 6-8"/><path d="M14 6h4v4"/></svg></div>
+        <h3>Performance &amp; Faturamento</h3>
+        <span class="cat-count mono">6 entregas</span>
+      </div>
+      <div class="diff">
+        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>Um mês sem faturamento informado era tratado como R$ 0,00, mesmo quando o documento simplesmente ainda não trazia aquele dado.</p></div>
+        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O sistema diferencia um mês com R$ 0,00 declarado de um mês ainda "Não declarado", evitando distorcer a análise.</p></div>
+      </div>
+      <ul class="fixes">
+        <li>Correção de ausência de dados performados no Performance</li>
+        <li>Remoção de tooltip indevido ao salvar produto em Informações de Mercado</li>
+        <li>Ajuste de obrigatoriedade e comportamento de Garantia e Concentração</li>
+        <li>Investigação e correção de duplicidade de faturamento após atuação entre esteiras</li>
+        <li>Correção de erro ao excluir ano no resumo de faturamento</li>
+      </ul>
+    </div>
+
+    <!-- Outras entregas -->
+    <div class="cat reveal">
+      <div class="cat-head">
+        <div class="cat-ic"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7.5" height="7.5" rx="1.2"/><rect x="13.5" y="3" width="7.5" height="7.5" rx="1.2"/><rect x="3" y="13.5" width="7.5" height="7.5" rx="1.2"/><rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.2"/></svg></div>
+        <h3>Outras entregas</h3>
+        <span class="cat-count mono">7 entregas</span>
+      </div>
+      <div class="diff">
+        <div class="diff-box before"><span class="diff-lbl">ANTES</span><p>A analista podia esbarrar em erro ao concluir a devolução de uma proposta, sem saber se a ação tinha sido salva.</p></div>
+        <div class="diff-box after"><span class="diff-lbl">AGORA</span><p>O fluxo de inclusão e devolução do parecer é concluído sem erro, com histórico registrado corretamente.</p></div>
+      </div>
+      <ul class="fixes">
+        <li>Correção de duplicidade na soma de Ativo na Performance</li>
+        <li>Melhoria na visualização do parecer na nova esteira</li>
+        <li>Ações em processamento ajustadas para reduzir a sensação de abandono na tela</li>
+        <li>Porta atualizada automaticamente após análise do Faturamento, sem refresh</li>
+        <li>Aumento do limite de caracteres no fluxo de mudança de etapa</li>
+        <li>Replicação do fluxo para propostas de Reativação</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap reveal">
+    <div class="closing-eyebrow">Para fechar</div>
+    <p class="lede">Foram <b>48 entregas</b> nesta Sprint 13 — cada uma delas significa uma auditoria mais rápida, um cliente que não sente o erro, uma operação que segue rodando sem travar.</p>
+    <h2>Pra frente<br>e pra cima<span class="accent">. Sempre.</span></h2>
+    <a class="cta" href="#delivered" onclick="document.querySelector('.delivered').scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'});return false;">
+      Relatório completo
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>ONE7 GRUPO</span>
+    <span>BDP · SPRINT 13 · 17/08&ndash;31/08/26</span>
+    <span>GERADO EM 31/08/2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reveals = document.querySelectorAll('.reveal');
+    if(reduced || !('IntersectionObserver' in window)){
+      reveals.forEach(function(el){ el.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    reveals.forEach(function(el){ io.observe(el); });
+  })();
+</script>
